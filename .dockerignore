@@ -1,0 +1,9 @@
+.idea/
+.git/
+k8s
+k8s.zip
+storage/logs/*
+storage/debugbar/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*

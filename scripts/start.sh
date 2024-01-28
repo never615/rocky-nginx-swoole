@@ -1,26 +1,5 @@
 #!/bin/bash
 
-echo '-------- run laravel sail scripts start  ----------'
-
- if [ ! -z "$WWWUSER" ]; then
-     usermod -u $WWWUSER sail
- fi
-
-if [ ! -d /.composer ]; then
-    mkdir /.composer
-fi
-
-chmod -R ugo+rw /.composer
-
-if [ $# -gt 0 ]; then
-    exec gosu $WWWUSER "$@"
-#else
-#    exec /usr/bin/supervisord -c /etc/supervisord.conf
-fi
-
-echo '-------- run laravel sail scripts end  ----------'
-
-
 echo '-------- run start scripts start  ----------'
 
 # Enables 404 pages through php index

@@ -2,7 +2,6 @@ FROM rockylinux:9.3
 
 LABEL maintainer="never615 <never615@gmail.com>"
 
-ARG WWWGROUP
 ARG NODE_VERSION=20
 ARG POSTGRES_VERSION=15
 # define script variables
@@ -74,10 +73,6 @@ RUN chmod 755 /horizon_exit.sh
 ADD errors/ /var/www/errors
 
 ADD conf/nginx-site.conf /etc/nginx/conf.d/default.conf
-
-
-RUN groupadd --force -g $WWWGROUP sail
-RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php
 

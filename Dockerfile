@@ -31,7 +31,7 @@ RUN dnf upgrade --refresh -y &&\
 # install php
 RUN dnf install -y  http://rpms.remirepo.net/enterprise/remi-release-9.rpm && \
     dnf module -y install php:remi-$PHP_VERSION && \
-    dnf -y install php-redis php-soap php-gd php-mysql php-mysqlnd php-pdo php-mcrypt \
+    dnf -y install php-pecl-redis5 php-soap php-gd php-mysql php-mysqlnd php-pdo php-mcrypt \
         php-pgsql php-curl php-devel php-bcmath php-pecl-mongodb  \
         php-process php-pecl-zip php-gmp php-swoole && \
     dnf clean all && \

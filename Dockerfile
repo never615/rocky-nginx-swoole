@@ -76,9 +76,6 @@ ADD errors/ /var/www/errors
 ADD conf/nginx-site.conf /etc/nginx/conf.d/default.conf
 
 
-RUN rm -rf ./Dockerfile*
-RUN rm -rf ./.env.*
-
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
@@ -86,11 +83,12 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php
 
 
 COPY php.ini ${php_vars}
-# laravel-s 自动刷新需要的扩展
-RUN dnf install -y \
-   php83-php-pecl-inotify && \
-   dnf clean all && \
-   rm -rf /var/cache/dnf
+
+## laravel-s 自动刷新需要的扩展
+#RUN dnf install -y \
+#   php83-php-pecl-inotify && \
+#   dnf clean all && \
+#   rm -rf /var/cache/dnf
 
 
 EXPOSE 80

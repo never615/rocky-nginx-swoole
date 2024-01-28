@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "rocky-build" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "rocky-build" ]
+    branches: [ "master" ]
 
 jobs:
   get-tags:

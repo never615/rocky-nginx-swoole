@@ -7,21 +7,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-  get-tags:
-    runs-on: ubuntu-latest
-    env:
-      TZ: Asia/Shanghai
-    outputs:
-      tags: ${{ steps.output-id.outputs.v }}
-    steps:
-      - uses: actions/checkout@v3
-      - id: output-id
-        run: |
-          VERSION=edge
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            VERSION=${GITHUB_REF#refs/tags/v}
-          fi
-          echo "v=${VERSION}" >> $GITHUB_OUTPUT  
   push-docker-hub:
     runs-on: ubuntu-latest
     env:
@@ -40,5 +25,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/rocky-nginx-swoole:${{ needs.get-tags.outputs.tags }}
             ${{ secrets.DOCKERHUB_USERNAME }}/rocky-nginx-swoole:latest  
